@@ -22,17 +22,17 @@ def post():
     pr.save(data)
     return 'Produto cadastrado'
 
-@app.route("/mdb_editar/<int:id>", methods=['PUT'])
-def put(id):
+@app.route("/mdb_editar/<nome>", methods=['PUT'])
+def put(nome):
     data = request.json
     pr = Produto()
-    pr.update(id, data)
+    pr.update(nome, data)
     return 'Produto editado'
 
-@app.route("/mdb_deletar/<int:id>", methods=['DELETE'])
-def delete(id):
+@app.route("/mdb_deletar/<nome>", methods=['DELETE'])
+def delete(nome):
     pr = Produto()
-    pr.remove()
+    pr.remove(nome)
     return 'Produto deletado'
 
 

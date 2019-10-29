@@ -11,8 +11,15 @@ class Produto():
     def save(self, json):
         self.conexao.db_save(json)
 
-    def update(self, query, field):
-        self.conexao.db_update(query, field)
+    def update(self, nome, edit):
+        '''
+        :param nome: nome a ser editado no BD, transforma em um JSON para a query
+        :param edit: campo total pós-edição, transforma em um JSON para o field
+        '''
+        self.conexao.db_update({"nome":nome}, {"$set":edit})
 
-    def remove(self, query):
-        self.conexao.db_remove(query)
+    def remove(self, nome):
+        '''
+        :param nome: nome a ser excluído no BD, transforma em um JSON para a query
+        '''
+        self.conexao.db_remove({"nome":nome})

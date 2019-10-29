@@ -33,10 +33,10 @@ class MongoConnection():
         try:
             self.produto.update(query, field)
         except Exception as e:
-            print(f"Erro ao atualizar registro: {e} \n {json}")
+            print(f"Erro ao atualizar registro: {e} \n {query}, {field}")
 
     def db_remove(self, query):
         try:
             self.produto.remove(query)
         except Exception as e:
-            print(f"Erro ao excluir registro: {e} \n {json}")
+            print(f"Erro ao excluir registro: {e} \n {query}")
