@@ -1,5 +1,4 @@
 import pymongo
-import jsonify
 
 class MongoConnection():
     def __init__(self):

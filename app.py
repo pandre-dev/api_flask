@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from produto import Produto
 
 app = Flask(__name__)
@@ -9,28 +9,28 @@ def index():
     return("API para crud de produtos em uma base de dados do MongoDB")
 
 
-@app.route("/mdb_ler", methods=['GET'])
-def get():
+@app.route("/ler", methods=['GET'])
+def ler_todos():
     pr = Produto()
     data = pr.read()
     return data
 
-@app.route("/mdb_cadastrar", methods=['POST'])
-def post():
+@app.route("/novo", methods=['POST'])
+def cadastrar():
     data = request.json
     pr = Produto()
     pr.save(data)
     return 'Produto cadastrado'
 
-@app.route("/mdb_editar/<nome>", methods=['PUT'])
-def put(nome):
+@app.route("/editar/<nome>", methods=['PUT'])
+def editar(nome):
     data = request.json
     pr = Produto()
     pr.update(nome, data)
     return 'Produto editado'
 
-@app.route("/mdb_deletar/<nome>", methods=['DELETE'])
-def delete(nome):
+@app.route("/deletar/<nome>", methods=['DELETE'])
+def deletar(nome):
     pr = Produto()
     pr.remove(nome)
     return 'Produto deletado'
